@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NET SUPPORT | Panel de Administración</title>
+    <!-- Íconos Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app" class="layout">
+
+        <!-- BARRA LATERAL (SIDEBAR) -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class='bx bx-wifi brand-icon'></i>
+                <h2>NET SUPPORT</h2>
+            </div>
+            
+            <ul class="menu-list">
+                <li id="menu-dashboard" class="menu-item active" onclick="navegarAdmin('dashboard')">
+                    <i class='bx bxs-dashboard'></i> <span>Dashboard</span>
+                </li>
+                <li id="menu-tecnicos" class="menu-item" onclick="navegarAdmin('tecnicos')">
+                    <i class='bx bxs-wrench'></i> <span>Gestión de Técnicos</span>
+                </li>
+                <li id="menu-averias" class="menu-item" onclick="navegarAdmin('averias')">
+                    <i class='bx bxs-report'></i> <span>Averías y Reportes</span>
+                </li>
+                <li id="menu-planes" class="menu-item" onclick="navegarAdmin('planes')">
+                    <i class='bx bxs-package'></i> <span>Planes de Internet</span>
+                </li>
+                <li id="menu-clientes" class="menu-item" onclick="navegarAdmin('clientes')">
+                    <i class='bx bxs-group'></i> <span>Clientes</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button onclick="cerrarSesion()" class="btn-logout">
+                    <i class='bx bx-log-out'></i> <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="contenido-principal">
+            
+            <!-- HEADER DE USUARIO -->
+            <header class="topbar">
+                <div class="search-box">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Buscar registros...">
+                </div>
+
+                <div class="user-profile">
+                    <!-- SELECTOR DE VISTA DE ROL -->
+                    <div class="selector-rol-container">
+                        <label for="selectRolVista" style="font-size: 0.85rem; font-weight: 600; color: #636e72;">Modo Vista:</label>
+                        <select id="selectRolVista" onchange="cambiarModoVista(this.value)" class="select-rol">
+                            <option value="administrador">Administrador</option>
+                            <option value="cliente">Cliente</option>
+                            <option value="tecnico">Técnico</option>
+                        </select>
+                    </div>
+
+                    <div class="user-info">
+                        <span id="userName" class="user-name">Administrador</span>
+                        <span id="userRole" class="role-badge">Admin</span>
+                    </div>
+                    <div class="avatar">
+                        <i class='bx bx-user'></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 1. SECCIÓN DASHBOARD -->
+            <section id="sec-dashboard" class="seccion-admin">
+                <h1 class="page-title">DASHBOARD PRINCIPAL</h1>
+                
+                <div class="tarjetas-grid">
+                    <div class="card-stat">
+                        <div class="stat-info">
+                            <h3 id="countTecnicos">0</h3>
+                            <p>Técnicos Activos</p>
+                        </div>
+                        <i class='bx bxs-wrench stat-icon'></i>
+                    </div>
+
+                    <div class="card-stat">
+                        <div class="stat-info">
+                            <h3 id="countAverias">0</h3>
+                            <p>Averías Pendientes</p>
+                        </div>
+                        <i class='bx bxs-error-circle stat-icon warning'></i>
+                    </div>
+
+                    <div class="card-stat">
+                        <div class="stat-info">
+                            <h3 id="countClientes">0</h3>
+                            <p>Clientes Registrados</p>
+                        </div>
+                        <i class='bx bxs-group stat-icon'></i>
+                    </div>
+
+                    <div class="card-stat">
+                        <div class="stat-info">
+                            <h3 id="countPlanes">0</h3>
+                            <p>Planes Disponibles</p>
+                        </div>
+                        <i class='bx bxs-package stat-icon'></i>
+                    </div>
+                </div>
+
+                <div class="dashboard-tables">
+                    <div class="card-table">
+                        <h3>Averías Recientes</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Avería</th>
+                                    <th>Estado</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaResumenAverias">
+                                <tr><td colspan="4" class="text-center">Cargando averías...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. SECCIÓN TÉCNICOS -->
+            <section id="sec-tecnicos" class="seccion-admin oculto">
+                <h1 class="page-title">GESTIÓN DE TÉCNICOS Y PERSONAL</h1>
+
+                <div class="card-form">
+                    <h3>Registrar Nuevo Técnico o Personal</h3>
+                    <form id="formRegistroTecnico" class="grid-form">
+                        <div class="form-group">
+                            <label for="tecNombre">Nombre Completo</label>
+                            <input type="text" id="tecNombre" placeholder="Ej: Juan Pérez" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tecCorreo">Correo Electrónico</label>
+                            <input type="email" id="tecCorreo" placeholder="tecnico@netsupport.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tecTelefono">Teléfono de Contacto</label>
+                            <input type="text" id="tecTelefono" placeholder="809-000-0000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tecPassword">Contraseña Inicial</label>
+                            <input type="password" id="tecPassword" placeholder="******" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tecRol">Rol del Usuario</label>
+                            <select id="tecRol" class="select-rol" style="width: 100%; padding: 10px;">
+                                <option value="tecnico">Técnico</option>
+                                <option value="administrador">Administrador</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn-primary">Registrar Personal</button>
+                        </div>
+                    </form>
+                    <div id="msgTecnico" class="mensaje-alerta"></div>
+                </div>
+
+                <div class="card-table mt-20">
+                    <h3>Listado de Técnicos</h3>
+                    <div id="contenedorTecnicos">Cargando personal técnico...</div>
+                </div>
+            </section>
+
+            <!-- 3. SECCIÓN AVERÍAS Y REPORTES -->
+            <section id="sec-averias" class="seccion-admin oculto">
+                <h1 class="page-title">GESTIÓN DE AVERÍAS Y SOPORTE</h1>
+
+                <div class="card-table">
+                    <h3>Reportes de Averías Registrados</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID Ticket</th>
+                                <th>Cliente</th>
+                                <th>Descripción</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Técnico Asignado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaAveriasCompleta">
+                            <tr><td colspan="7" class="text-center">Cargando reportes...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 4. SECCIÓN PLANES -->
+            <section id="sec-planes" class="seccion-admin oculto">
+                <h1 class="page-title">PLANES DE INTERNET</h1>
+
+                <div class="card-form">
+                    <h3>Crear Nuevo Plan</h3>
+                    <form id="formCrearPlan" class="grid-form">
+                        <div class="form-group">
+                            <label for="planNombre">Nombre del Plan</label>
+                            <input type="text" id="planNombre" placeholder="Ej: Plan Fibra 100M" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="planVelocidad">Velocidad</label>
+                            <input type="text" id="planVelocidad" placeholder="100 Mbps" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="planPrecio">Precio Mensual ($)</label>
+                            <input type="number" id="planPrecio" placeholder="1500" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn-primary">Guardar Plan</button>
+                        </div>
+                    </form>
+                    <div id="msgPlan" class="mensaje-alerta"></div>
+                </div>
+
+                <div class="card-table mt-20">
+                    <h3>Catálogo de Planes Activos</h3>
+                    <div id="contenedorPlanes" class="grid-planes"></div>
+                </div>
+            </section>
+
+            <!-- 5. SECCIÓN CLIENTES -->
+            <section id="sec-clientes" class="seccion-admin oculto">
+                <h1 class="page-title">CLIENTES REGISTRADOS</h1>
+                <div class="card-table">
+                    <div id="contenedorClientes">Cargando listado de clientes...</div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Script principal Firebase JS -->
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
