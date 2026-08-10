@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NET SUPPORT</title>
+    <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+</head>
+<body>
+
+    <!-- Navegación -->
+    <header>
+        <nav>
+            <div class="logo">NET SUPPORT</div>
+
+                <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="velocidad.html">Medir Velocidad</a></li>
+                <li><a href="planes.html">Ver Planes</a></li>
+                <li><a href="../login/login.html" class="btn-nav">Iniciar Sesión</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section id="hero"></section>
+
+        <!-- Servicios -->
+        <section id="Servicios">
+            <h1>Conoce Nuestros Servicios</h1>
+        </section>
+
+        <section class="Servicios-grid">
+
+            <div class="Servicios-card">
+                <img src="img/Foto1.jpg" alt="Planes Flexibles">
+                <h3>Planes Flexibles</h3>
+                <p>
+                    Ofrecemos planes de internet flexibles y adaptados
+                    a tus necesidades, ya sea prepago o postpago.
+                </p>
+            </div>
+
+            <div class="Servicios-card">
+                <img src="img/Foto2.jpg" alt="Alta Velocidad">
+                <h3>Alta Velocidad</h3>
+                <p>
+                    Disfruta de una conexión rápida y estable para todas
+                    tus actividades en línea.
+                </p>
+            </div>
+
+            <div class="Servicios-card">
+                <img src="img/Fotopc.png" alt="Soporte Técnico">
+                <h3>Soporte Técnico</h3>
+                <p>
+                    Brindamos soporte técnico especializado para resolver
+                    cualquier problema con tu conexión.
+                </p>
+            </div>
+
+        </section>
+
+
+       <!-- CHATBOT -->
+<div class="chatbot" id="chatbot">
+
+    <div class="chat-header">
+        <h3>🤖 NET SUPPORT</h3>
+        <button onclick="cerrarChat()">✖</button>
+    </div>
+
+    <div class="chat-body" id="chat-body">
+
+        <div class="bot">
+            ¡Hola! Soy el asistente virtual de NET SUPPORT.
+            <br><br>
+            ¿En qué puedo ayudarte?
+        </div>
+
+    </div>
+
+    <div class="chat-input">
+
+        <input
+            type="text"
+            id="pregunta"
+            placeholder="Escribe tu pregunta..."
+            onkeypress="if(event.key==='Enter') enviarPregunta();">
+
+        <button onclick="enviarPregunta()">
+            Enviar
+        </button>
+
+    </div>
+
+</div>
+
+<!-- BOTÓN FLOTANTE -->
+<div class="soporte">
+
+    <button class="btn-soporte" onclick="abrirMenu()">
+        💬 Chatea Con Nosotros
+    </button>
+
+    <div class="menu" id="menu">
+
+        <a href="https://wa.me/18493413740" target="_blank">
+            <img src="whatsapp-fill.svg" width="30">
+            <div>
+                <h4>WhatsApp</h4>
+                <p>Habla con un asesor.</p>
+            </div>
+        </a>
+
+        <a href="#" onclick="abrirChatbot(); return false;">
+            <span style="font-size:30px;">🤖</span>
+            <div>
+                <h4>Chat Bot</h4>
+                <p>Asistencia automática.</p>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+
+        <!-- Fibra Óptica -->
+        <section class="fibra-optica">
+
+            <div class="contenido-fibra">
+
+                <div class="texto-fibra">
+
+                    <span class="subtitulo">
+                        TECNOLOGÍA QUE TE CONECTA
+                    </span>
+
+                    <h2>
+                        Fibra Óptica <br>
+                        de Alta Velocidad
+                    </h2>
+
+                    <p>
+                        En NET SUPPORT utilizamos tecnología de fibra óptica
+                        para brindarte una conexión rápida, estable y segura
+                        para tu hogar o empresa.
+                    </p>
+
+                    <div class="beneficios">
+                        
+                        <div class="beneficio">
+                            <i class="fas fa-gauge-high"></i>
+                            <h4>Más Velocidad</h4>
+                            <span>Hasta 1000 Mbps</span>
+                        </div>
+
+                        <div class="beneficio">
+                            <i class="fas fa-shield-halved"></i>
+                            <h4>Mayor Seguridad</h4>
+                            <span>Conexión estable</span>
+                        </div>
+
+                        <div class="beneficio">
+                            <i class="fas fa-wifi"></i>
+                            <h4>Cobertura</h4>
+                            <span>Hogar y Empresas</span>
+                        </div>
+
+                        <div class="beneficio">
+                            <i class="fas fa-headset"></i>
+                            <h4>Soporte 24/7</h4>
+                            <span>Siempre disponibles</span>
+                        </div>
+
+                    </div>
+
+
+                      <a href="velocidad.html" class="btn-fibra">
+                        Medir Velocidad
+                    </a><br><br>
+
+                     <a href="planes.html" class="btn-fibra">
+                        Ver Planes Disponibles
+                    </a>
+
+                </div>
+
+                <div class="imagen-fibra">
+                    <img src="img/Fibraopticajpg.jpg" alt="Fibra óptica">
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-logo">
+                <h2>NET SUPPORT</h2>
+                <p>
+                    Conectando personas con internet rápido,
+                    seguro y confiable.
+                </p>
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Enlaces</h3>
+
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="velocidad.html">Medir Velocidad</a></li>
+                    <li><a href="planes.html">Ver Planes</a></li>
+                </ul>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h3>Contacto</h3>
+
+                <p>📧 soportenetsupport@gmail.com</p>
+                <p>📞 (849) 341-3740</p>
+                <p>📍 Santo Domingo, República Dominicana</p>
+
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 NET SUPPORT | Todos los derechos reservados.</p>
+        </div>
+
+    </footer>
+
+    <script src="chatbot.js"></script>
+
+</body>
+</html>

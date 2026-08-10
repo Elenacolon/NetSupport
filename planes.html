@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+    <nav>
+
+        <div class="logo">NET SUPPORT</div>
+
+        
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="velocidad.html">Medir Velocidad</a></li>
+                <li><a href="planes.html">Ver Planes</a></li>
+                 <li><a href="../login/login.html" class="btn-nav">Iniciar Sesión</a></li>
+            </ul>
+
+    </nav>
+</header>
+
+<img src="img/Planes.jpeg" alt="Imagen planes" class="planes-image">
+
+<section id="Planes">
+
+    <h1>Planes Disponibles</h1>
+
+    <div class="cuadricula-planes">
+
+        <div class="plan-card">
+            <h3>Plan Básico</h3>
+            <p class="Velocidad">20 Mbps</p>
+            <p class="precio">RD$995.99/mes</p>
+
+            <button onclick="abrirModal('Plan Básico','20 Mbps','RD$995.99')">
+                Contratar
+            </button>
+        </div>
+
+        <div class="plan-card">
+            <h3>Plan Hogar Plus</h3>
+            <p class="Velocidad">50 Mbps</p>
+            <p class="precio">RD$1,995.99/mes</p>
+
+            <button onclick="abrirModal('Plan Hogar Plus','50 Mbps','RD$1,995.99')">
+                Contratar
+            </button>
+        </div>
+
+        <div class="plan-card">
+            <h3>Plan Avanzado</h3>
+            <p class="Velocidad">100 Mbps</p>
+            <p class="precio">RD$2,995.99/mes</p>
+
+            <button onclick="abrirModal('Plan Avanzado','100 Mbps','RD$2,995.99')">
+                Contratar
+            </button>
+        </div>
+
+        <div class="plan-card">
+            <h3>Plan Premium</h3>
+            <p class="Velocidad">200 Mbps</p>
+            <p class="precio">RD$3,995.99/mes</p>
+
+            <button onclick="abrirModal('Plan Premium','200 Mbps','RD$3,995.99')">
+                Contratar
+            </button>
+        </div>
+
+        <div class="plan-card">
+            <h3>Plan Ultra</h3>
+            <p class="Velocidad">500 Mbps</p>
+            <p class="precio">RD$4,995.99/mes</p>
+
+            <button onclick="abrirModal('Plan Ultra','500 Mbps','RD$4,995.99')">
+                Contratar
+            </button>
+        </div>
+
+        <div class="plan-card">
+            <h3>Plan Gigabit</h3>
+            <p class="Velocidad">1000 Mbps</p>
+            <p class="precio">RD$6,995.99/mes</p>
+
+            <button onclick="abrirModal('Plan Gigabit','1000 Mbps','RD$6,995.99')">
+                Contratar
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+<div id="modal" class="modal">
+
+    <div class="modal-box">
+
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+
+        <div class="icono-modal">
+            📶
+        </div>
+
+        <h2 id="tituloPlan"></h2>
+
+        <p id="velocidadPlan"></p>
+
+        <p class="texto-modal">
+            Completa tus datos y un asesor se pondrá en contacto contigo para finalizar la contratación del servicio.
+        </p>
+
+        <form id="formulario">
+
+            <input type="hidden" id="plan">
+            <input type="hidden" id="precio">
+
+            <div class="campo">
+                <label>Nombre completo</label>
+                <input type="text" id="nombre" placeholder="Ingrese su nombre" required>
+            </div>
+
+            <div class="campo">
+                <label>Correo electrónico</label>
+                <input type="email" id="email" placeholder="ejemplo@gmail.com" required>
+            </div>
+
+            <div class="campo">
+                <label>Cédula</label>
+                <input type="text" id="cedula" placeholder="000-0000000-0" maxlength="13" required>
+            </div>
+
+            <button type="submit" class="btnEnviar">
+                Solicitar Plan
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<footer class="footer">
+    <p>&copy; 2026 NET SUPPORT. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init({
+    publicKey: "WGFZ9wdHzSVkrI49I",
+});
+</script>
+
+<script type="module" src="script.js"></script>
+
+
+
+</body>
+</html>

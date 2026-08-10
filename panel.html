@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NET SUPPORT | Panel de Control</title>
+    
+    <!-- Íconos Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app">
+
+        <!-- BARRA SUPERIOR (HEADER) -->
+        <header class="topbar">
+            <div class="brand">
+                <i class='bx bx-wifi brand-icon'></i>
+                <h2>NET SUPPORT</h2>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Buscar aquí...">
+                <button><i class='bx bx-search'></i></button>
+            </div>
+
+            <div class="user-menu">
+                <i class='bx bx-bell icon-btn'></i>
+                <div class="avatar">
+                    <i class='bx bx-user'></i>
+                </div>
+        </header>
+
+        <!-- ================= 1. PANEL ADMINISTRADOR ================= -->
+        <div id="adminPanel" class="layout oculto">
+            
+            <aside class="sidebar">
+                <ul>
+                    <li id="menu-dashboard" class="active" onclick="mostrar('dashboard')">
+                        <i class='bx bxs-dashboard'></i> <span>Dashboard</span>
+                    </li>
+                    <li id="menu-clientes" onclick="mostrar('clientes')">
+                        <i class='bx bxs-group'></i> <span>Clientes</span>
+                    </li>
+                    <li id="menu-tecnicos" onclick="mostrar('tecnicos')">
+                        <i class='bx bxs-wrench'></i> <span>Técnicos y Personal</span>
+                    </li>
+                    <li id="menu-planes" onclick="mostrar('planes')">
+                        <i class='bx bxs-package'></i> <span>Planes</span>
+                    </li>
+                    <li id="menu-solicitudes" onclick="mostrar('solicitudes')">
+                        <i class='bx bxs-coupon'></i> <span>Solicitudes</span>
+                    </li>
+                    <li id="menu-facturas" onclick="mostrar('facturas')">
+                        <i class='bx bxs-credit-card'></i> <span>Facturas</span>
+                    </li>
+                    <li id="menu-config" onclick="mostrar('config')">
+                        <i class='bx bxs-cog'></i> <span>Configuración</span>
+                    </li>
+                    <li onclick="cerrarSesion()" class="logout">
+                        <i class='bx bx-log-out'></i> <span>Salir</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="contenido">
+                <h1 id="titulo" class="page-title">DASHBOARD</h1>
+
+                <!-- DASHBOARD -->
+                <div id="dashboard" class="seccion">
+                    <div class="tarjetas">
+                        <div class="card card-purple">
+                            <div class="card-info">
+                                <b id="countClientes">0</b>
+                                <p>Clientes Registrados</p>
+                            </div>
+                            <i class='bx bx-group card-icon'></i>
+                        </div>
+
+                        <div class="card card-purple">
+                            <div class="card-info">
+                                <b id="countTecnicos">0</b>
+                                <p>Técnicos / Personal</p>
+                            </div>
+                            <i class='bx bx-wrench card-icon'></i>
+                        </div>
+
+                        <div class="card card-purple">
+                            <div class="card-info">
+                                <b id="countPlanes">0</b>
+                                <p>Planes en Sistema</p>
+                            </div>
+                            <i class='bx bx-package card-icon'></i>
+                        </div>
+
+                        <div class="card card-purple">
+                            <div class="card-info">
+                                <b id="countSolicitudes">0</b>
+                                <p>Solicitudes Pendientes</p>
+                            </div>
+                            <i class='bx bx-message-square-dots card-icon'></i>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="main-card">
+                            <div class="card-header">
+                                <h2>Solicitudes Recientes</h2>
+                                <button class="btn-purple" onclick="mostrar('solicitudes')">Ver Todas</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Cliente</th>
+                                            <th>Tipo</th>
+                                            <th>Detalle</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaResumenSolicitudes">
+                                        <tr>
+                                            <td colspan="4" style="text-align:center; color:#888;">Cargando solicitudes...</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="main-card">
+                            <div class="card-header">
+                                <h2>Nuevos Clientes</h2>
+                            </div>
+                            <ul class="recent-users-list" id="listaClientesRecientes">
+                                <li><strong>Cargando...</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIONES SECUNDARIAS ADMIN -->
+                <div id="clientes" class="seccion oculto">
+                    <h2>👥 Gestión de Clientes</h2>
+                    <p style="margin-bottom: 15px;">Listado general de usuarios registrados como clientes.</p>
+                    <div id="contenedorClientes" class="main-card">Cargando clientes...</div>
+                </div>
+
+                <div id="tecnicos" class="seccion oculto">
+                    <h2>🛠 Personal Técnico y Administrativo</h2>
+                    <div class="main-card" style="margin-bottom: 20px;">
+                        <h3>Registrar Nuevo Personal</h3>
+                        <form id="formRegistroPersonal" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-top:15px;">
+                            <input type="text" id="pNombre" placeholder="Nombre completo" required style="padding:10px; border-radius:8px; border:1px solid #ccc;">
+                            <input type="email" id="pCorreo" placeholder="Correo electrónico" required style="padding:10px; border-radius:8px; border:1px solid #ccc;">
+                            <input type="password" id="pPassword" placeholder="Contraseña" required style="padding:10px; border-radius:8px; border:1px solid #ccc;">
+                            
+                            <!-- DESPLEGABLE ROL -->
+                            <select id="pRol" required style="padding:10px; border-radius:8px; border:1px solid #ccc; background:white;">
+                                <option value="" disabled selected>Seleccione Rol</option>
+                                <option value="tecnico">Técnico</option>
+                                <option value="administrador">Administrador</option>
+                            </select>
+
+                            <button type="submit" style="padding:10px; background:#6c5ce7; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">
+                                Registrar Usuario
+                            </button>
+                        </form>
+                        <div id="msgPersonal" style="margin-top:10px;"></div>
+                    </div>
+
+                    <div id="contenedorTecnicos" class="main-card">Cargando personal...</div>
+                </div>
+
+                <div id="planes" class="seccion oculto">
+                    <h2>📦 Planes de Internet</h2>
+                    <div class="main-card" style="margin-bottom: 20px;">
+                        <h3>Crear Nuevo Plan</h3>
+                        <form id="formCrearPlan" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-top:15px;">
+                            <input type="text" id="planNombre" placeholder="Nombre del Plan (Ej: Plan Fibra 50M)" required style="padding:10px; border-radius:8px; border:1px solid #ccc;">
+                            <input type="text" id="planVelocidad" placeholder="Velocidad (Ej: 50 Mbps)" required style="padding:10px; border-radius:8px; border:1px solid #ccc;">
+                            <input type="number" id="planPrecio" placeholder="Precio mensual ($)" required style="padding:10px; border-radius:8px; border:1px solid #ccc;">
+                            <button type="submit" style="padding:10px; background:#6c5ce7; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">
+                                Guardar Plan
+                            </button>
+                        </form>
+                        <div id="msgPlan" style="margin-top:10px;"></div>
+                    </div>
+
+                    <div id="contenedorPlanesAdmin" class="main-card">Cargando planes...</div>
+                </div>
+
+                <div id="solicitudes" class="seccion oculto">
+                    <h2>🎫 Solicitudes de Averías y Servicio</h2>
+                    <div id="contenedorSolicitudesAdmin" style="margin-top: 15px;">Cargando...</div>
+                </div>
+
+                <div id="facturas" class="seccion oculto">
+                    <h2>💳 Gestión de Facturas</h2>
+                    <div class="main-card"><p>Módulo de facturación.</p></div>
+                </div>
+
+                <div id="config" class="seccion oculto">
+                    <h2>⚙ Configuración del Sistema</h2>
+                    <div class="main-card"><p>Ajustes generales del sistema.</p></div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- ================= 2. PANEL TÉCNICO ================= -->
+        <div id="tecnicoPanel" class="layout oculto">
+            <aside class="sidebar">
+                <ul>
+                    <li id="tmenu-averias" class="active" onclick="mostrarTecnico('averias')">
+                        <i class='bx bxs-wrench'></i> <span>Gestión de Averías</span>
+                    </li>
+                    <li id="tmenu-planes" onclick="mostrarTecnico('planes')">
+                        <i class='bx bxs-package'></i> <span>Planes de Red</span>
+                    </li>
+                    <li onclick="cerrarSesion()" class="logout">
+                        <i class='bx bx-log-out'></i> <span>Salir</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="contenido">
+                <h1 class="page-title">Panel Técnico - Soporte en Campo</h1>
+                <div id="tecnicoContenido"></div>
+            </main>
+        </div>
+
+        <!-- ================= 3. PANEL CLIENTE ================= -->
+        <div id="clientePanel" class="layout oculto">
+            <aside class="sidebar">
+                <ul>
+                    <li id="cmenu-inicio" class="active" onclick="mostrarCliente('inicio')">
+                        <i class='bx bxs-home'></i> <span>Inicio</span>
+                    </li>
+                    <li id="cmenu-plan" onclick="mostrarCliente('plan')">
+                        <i class='bx bxs-wifi'></i> <span>Mi Plan</span>
+                    </li>
+                    <li id="cmenu-soporte" onclick="mostrarCliente('soporte')">
+                        <i class='bx bxs-help-circle'></i> <span>Soporte / Averías</span>
+                    </li>
+                    <li id="cmenu-perfil" onclick="mostrarCliente('perfil')">
+                        <i class='bx bxs-user-detail'></i> <span>Mi Perfil</span>
+                    </li>
+                    <li onclick="cerrarSesion()" class="logout">
+                        <i class='bx bx-log-out'></i> <span>Salir</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="contenido">
+                <h1 class="page-title">Bienvenido <span id="nombreCliente"></span></h1>
+                <div id="clienteContenido"></div>
+            </main>
+        </div>
+
+    </div>
+
+    <!-- Firebase y Lógica JavaScript -->
+    <script type="module" src="panel.js"></script>
+</body>
+</html>

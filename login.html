@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NET SUPPORT | Iniciar Sesión</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card-container">
+    <div class="login-right-panel">
+
+        <!-- LOGIN -->
+        <section id="loginSection">
+            <span class="login-subtitle">BIENVENIDO A NET SUPPORT</span>
+            <h1 class="login-title">Iniciar sesión</h1>
+            <p class="login-description">Accede con tu cuenta.</p>
+
+            <form id="loginForm" class="login-form">
+                <div class="login-form-group">
+                    <label for="loginEmail">Correo Electrónico</label>
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        class="login-input"
+                        placeholder="correo@ejemplo.com"
+                        required>
+                </div>
+
+                <div class="login-form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <div class="login-input-wrapper">
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            class="login-input"
+                            placeholder="********"
+                            required>
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="login-toggle-password">
+                            Ver
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    Iniciar sesión
+                </button>
+
+                <div id="loginMessage"></div>
+            </form>
+
+            <p class="login-switch">
+                ¿No tienes una cuenta?
+                <button type="button" id="showRegister" class="login-link-button">
+                    Regístrate
+                </button>
+            </p>
+        </section>
+
+        <!-- REGISTRO -->
+        <section id="registerSection" class="login-hidden">
+            <span class="login-subtitle">NUEVO USUARIO</span>
+            <h1 class="login-title">Crear cuenta</h1>
+            <p class="login-description">Registra tu cuenta para acceder.</p>
+
+            <form id="registerForm" class="login-form">
+                <div class="login-form-group">
+                    <label for="registerName">Nombre Completo</label>
+                    <input
+                        type="text"
+                        id="registerName"
+                        class="login-input"
+                        required>
+                </div>
+
+                <div class="login-form-group">
+                    <label for="registerEmail">Correo Electrónico</label>
+                    <input
+                        type="email"
+                        id="registerEmail"
+                        class="login-input"
+                        required>
+                </div>
+
+                <div class="login-form-group">
+                    <label for="registerPassword">Contraseña</label>
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        class="login-input"
+                        required>
+                </div>
+
+                <div class="login-form-group">
+                    <label for="confirmPassword">Confirmar Contraseña</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        class="login-input"
+                        required>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    Crear cuenta
+                </button>
+
+                <div id="registerMessage"></div>
+            </form>
+
+            <p class="login-switch">
+                ¿Ya tienes una cuenta?
+                <button type="button" id="backLogin" class="login-link-button">
+                    Iniciar sesión
+                </button>
+            </p>
+        </section>
+
+    </div>
+</div>
+
+<script type="module" src="login.js"></script>
+</body>
+</html>

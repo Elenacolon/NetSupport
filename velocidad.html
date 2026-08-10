@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velocidad</title>
+     <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+     
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">NET SUPPORT</div>
+
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="velocidad.html">Medir Velocidad</a></li>
+                <li><a href="planes.html">Ver Planes</a></li>
+                 <li><a href="../login/login.html" class="btn-nav">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<!--PRUEBA DE VELOCIDAD -->
+<section id="speed-test">
+
+    <div class="speed-container">
+
+        <div class="speed-header">
+
+            <span class="speed-tag">NET SUPPORT</span>
+
+            <h2>Prueba la velocidad de tu Internet</h2>
+
+            <p>
+                Comprueba el rendimiento de tu conexión en pocos segundos. Esta herramienta
+                te ayudará a conocer la velocidad de descarga, subida y el tiempo de respuesta
+                de tu red para que disfrutes de una mejor experiencia de navegación.
+            </p>
+
+        </div>
+
+        <div class="speed-info">
+
+            <div class="info-card">
+
+                <h3>¿Qué analiza esta prueba?</h3>
+
+                <p>
+                    Nuestro test evalúa los principales indicadores del rendimiento de tu conexión:
+                </p>
+
+                <ul>
+
+                    <li>
+                        <strong>Ping:</strong>
+                        Tiempo que tarda la información en viajar entre tu dispositivo e Internet.
+                    </li>
+
+                    <li>
+                        <strong>Descarga:</strong>
+                        Velocidad con la que recibes archivos, videos y contenido web.
+                    </li>
+
+                    <li>
+                        <strong>Subida:</strong>
+                        Velocidad para enviar archivos, realizar videollamadas y trabajar en la nube.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- Indicador Circular -->
+
+        <div class="speed-meter">
+
+            <div class="speed-circle">
+
+                <svg viewBox="0 0 200 200">
+
+                    <circle
+                        class="circle-bg"
+                        cx="100"
+                        cy="100"
+                        r="86">
+                    </circle>
+
+                    <circle
+                        id="speedRingFg"
+                        class="circle-progress"
+                        cx="100"
+                        cy="100"
+                        r="86">
+                    </circle>
+
+                </svg>
+
+                <div class="speed-display">
+
+                    <h1 id="speedBigNumber">0</h1>
+
+                    <span id="speedBigUnit">
+                        Mbps
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Botón -->
+
+        <div class="speed-action">
+
+            <button
+                id="startTestBtn"
+                onclick="runSpeedTest()">
+
+                Iniciar prueba
+
+            </button>
+
+        </div>
+
+        <!-- Estado -->
+
+        <div class="speed-status">
+
+            <p id="speedStatus">
+                Presiona <strong>"Iniciar prueba"</strong> para comenzar el análisis de tu conexión.
+            </p>
+
+        </div>
+
+        <!-- Resultados -->
+
+        <div class="speed-results">
+
+            <div class="result-card">
+
+                <span>Ping</span>
+
+                <h3 id="resPing">—</h3>
+
+                <small>ms</small>
+
+            </div>
+
+            <div class="result-card">
+
+                <span>Descarga</span>
+
+                <h3 id="resDown">—</h3>
+
+                <small>Mbps</small>
+
+            </div>
+
+            <div class="result-card">
+
+                <span>Subida</span>
+
+                <h3 id="resUp">—</h3>
+
+                <small>Mbps</small>
+
+            </div>
+
+        </div>
+
+        <!-- Evaluación -->
+
+        <div class="speed-advice">
+
+            <h3>Evaluación de tu conexión</h3>
+
+            <p id="speedAdvice">
+
+                Los resultados muestran una estimación del rendimiento actual de tu conexión.
+                La velocidad puede variar según la cantidad de dispositivos conectados,
+                el uso de la red y otros factores externos.
+
+            </p>
+
+        </div>
+
+        <!-- Recomendación -->
+
+        <div class="speed-recommendation">
+
+            <h3>¿Necesitas una conexión más rápida?</h3>
+
+            <p>
+
+                Si tu velocidad no cumple con tus necesidades, en
+                <strong>NET SUPPORT</strong> contamos con planes de Internet diseñados
+                para hogares, oficinas y pequeñas empresas, ofreciendo estabilidad,
+                velocidad y soporte técnico cuando lo necesites.
+
+            </p>
+
+            <a href="planes.html" class="plans-button">
+
+                Ver planes de Internet
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <script src="velocidad.js"></script>
+
+
+        <footer class="footer">
+
+        <p>&copy; 2026 NET SUPPORT. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
